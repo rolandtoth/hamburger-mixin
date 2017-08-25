@@ -14,6 +14,73 @@ There is also a "hamburger_tint" helper mixin included to easily colorize the ic
 [Sass](https://codepen.io/rolandtoth/pen/LypvrV?editors=1100) [Stylus](https://codepen.io/rolandtoth/pen/rzYPKK?editors=1100) [LESS](https://codepen.io/rolandtoth/pen/qXpoMd?editors=1100)
 
 
+## Usage
+
+Markup (no text next to the icon):
+
+```html
+<input type="checkbox" id="menu-toggle" />
+<label for="menu-toggle"><i></i></label>
+```
+
+Markup with text:
+
+```html
+<input type="checkbox" id="menu-toggle" />
+<label for="menu-toggle"><i></i><span>Menu</span></label>
+```
+
+## Calling the mixin
+
+### Sass
+
+```css
+// defaults
+#menu-toggle {
+  @include hamburger();
+}
+
+// some parameters + tint on hover
+#menu-toggle {
+  @include hamburger($width: 24px, $thickness: 2px, $gap: 5px, $color: lightgray, $padding: 24px);
+  &:hover {
+    @include hamburger_tint(orange);
+  }
+}
+```
+
+### Stylus
+
+```css
+// defaults
+#menu-toggle
+  hamburger()
+
+// some parameters + tint on hover
+#menu-toggle
+  hamburger(width: 24px, thickness: 2px, gap: 5px, color: lightgray, padding: 24px)
+  &:hover
+    hamburger_tint(orange)
+```
+
+### LESS
+
+```css
+// defaults
+#menu-toggle {
+  .hamburger();
+  }
+}
+
+// some parameters + tint on hover
+  .hamburger(@width: 24px, @thickness: 2px, @gap: 5px, @color: lightgray, @padding: 24px);
+  &:hover {
+    .hamburger_tint(orange);
+  }
+}
+```
+
+
  ## Parameters:
 
 - **width**: the width of the icon. `default: 32px`
