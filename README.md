@@ -16,14 +16,16 @@ There is also a "hamburger_tint" helper mixin included to easily colorize the ic
 
 ## Usage
 
-Markup (no text next to the icon):
+### Markup
+
+No text:
 
 ```html
 <input type="checkbox" id="menu-toggle" />
 <label for="menu-toggle"><i></i></label>
 ```
 
-Markup with text:
+With text:
 
 ```html
 <input type="checkbox" id="menu-toggle" />
