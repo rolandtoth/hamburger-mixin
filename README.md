@@ -30,9 +30,9 @@ Markup with text:
 <label for="menu-toggle"><i></i><span>Menu</span></label>
 ```
 
-## Calling the mixin
+### Calling the mixin
 
-### Sass
+#### Sass
 
 ```sass
 // defaults
@@ -49,7 +49,7 @@ Markup with text:
 }
 ```
 
-### Stylus
+#### Stylus
 
 ```stylus
 // defaults
@@ -63,7 +63,7 @@ Markup with text:
     hamburger_tint(orange)
 ```
 
-### LESS
+#### LESS
 
 ```less
 // defaults
