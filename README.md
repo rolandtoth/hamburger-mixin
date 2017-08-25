@@ -1,4 +1,4 @@
-# Animated hamburger icon mixin (Sass/Stylus/Less)
+# Animated hamburger icon mixin (Sass/Stylus/LESS)
 
 Hamburger menu mixins utilizing the checkbox hack so you can use CSS only to show a mobile menu (or off-canvas menu, etc).
 
