@@ -34,7 +34,7 @@ Markup with text:
 
 ### Sass
 
-```css
+```sass
 // defaults
 #menu-toggle {
   @include hamburger();
@@ -51,7 +51,7 @@ Markup with text:
 
 ### Stylus
 
-```css
+```stylus
 // defaults
 #menu-toggle
   hamburger()
@@ -65,7 +65,7 @@ Markup with text:
 
 ### LESS
 
-```css
+```less
 // defaults
 #menu-toggle {
   .hamburger();
