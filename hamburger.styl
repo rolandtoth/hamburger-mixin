@@ -1,0 +1,80 @@
+// Animated hamburger icon mixin
+// https://github.com/rolandtoth/hamburger-mixin
+
+// helper mixin
+hamburger_tint(color = black, tint_text = false, labelselector = '+ label')
+  {labelselector}
+    i, &::before, &::after
+      background-color: color
+    if tint_text
+      span
+        color: color
+
+// main mixin
+hamburger(width = 32px, thickness = 3px, gap = 7px, color = black, tint_text = false, radius = 0, anim = 0.25s, labelselector = '+ label', padding = 0, text = right)
+  height = (thickness * 3) + (gap * 2)
+  display none
+  {labelselector}
+    user-select: none
+    position: relative
+    display: inline-block
+    width: width
+    height: height
+    border: padding solid transparent
+    box-sizing content-box
+    z-index: 1050
+    line-height: height
+    white-space: nowrap
+    span
+      display: inline-block
+      position: absolute
+      left: 100%
+      margin-top: 1px
+      transition: color anim
+      if text == false
+        display none
+      else if text == 'left'
+        left: auto
+        right: 100%
+      &::before,
+      &::after
+        content: ''
+        display inline-block
+        min-width: 10px
+        width: width*0.2
+    i,
+    &::before,
+    &::after
+      position: absolute
+      left: 0
+      display: block
+      will-change: transform, background-color
+      width: width
+      height: thickness
+      border-radius: radius
+      transition: transform anim, background-color anim
+      outline: 1px solid transparent
+      backface-visibility: hidden
+    i
+      top: (thickness + gap)
+      font-size: 0
+      color: transparent
+      line-height: 0
+    &::before,
+    &::after
+      content: ''
+    &::before
+      top: 0
+    &::after
+      bottom: 0
+    &:hover
+      cursor: pointer
+  &:checked
+    {labelselector}
+      i
+        transform: scaleX(0.001)
+      &::before
+        transform: translateY(gap + thickness) rotate(45deg)
+      &::after
+        transform: translateY(-(gap + thickness)) rotate(-45deg)
+  hamburger_tint(color, tint_text, labelselector)
