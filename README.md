@@ -11,7 +11,9 @@ There is also a "hamburger_tint" helper mixin included to easily colorize the ic
 
 ## Demo
 
-https://codepen.io/rolandtoth/pen/LypvrV?editors=1100
+[Sass](https://codepen.io/rolandtoth/pen/LypvrV?editors=1100)
+[Stylus](https://codepen.io/rolandtoth/pen/rzYPKK?editors=1100)
+[LESS](https://codepen.io/rolandtoth/pen/qXpoMd?editors=1100)
 
 
  ## Parameters:
