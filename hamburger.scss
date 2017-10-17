@@ -83,15 +83,17 @@
     }
   }
   &:checked {
-    #{$labelselector} {
-      i {
-        transform: scaleX(0.001);
-      }
-      &::before {
-        transform: translateY($gap + $thickness) rotate(45deg);
-      }
-      &::after {
-        transform: translateY(-($gap + $thickness)) rotate(-45deg);
+    @if $anim != -1 {
+      #{$labelselector} {
+        i {
+          transform: scaleX(0.001);
+        }
+        &::before {
+          transform: translateY($gap + $thickness) rotate(45deg);
+        }
+        &::after {
+          transform: translateY(-($gap + $thickness)) rotate(-45deg);
+        }
       }
     }
   }
