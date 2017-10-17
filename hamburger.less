@@ -82,7 +82,7 @@
       cursor: pointer;
     }
   }
-  &:checked {
+  &:checked when not (@anim = -1) {
     @{labelselector} {
       i {
         transform: scaleX(0.001);
