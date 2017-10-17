@@ -70,11 +70,12 @@ hamburger(width = 32px, thickness = 3px, gap = 7px, color = black, tint_text = f
     &:hover
       cursor: pointer
   &:checked
-    {labelselector}
-      i
-        transform: scaleX(0.001)
-      &::before
-        transform: translateY(gap + thickness) rotate(45deg)
-      &::after
-        transform: translateY(-(gap + thickness)) rotate(-45deg)
+    if anim != -1
+      {labelselector}
+        i
+          transform: scaleX(0.001)
+        &::before
+          transform: translateY(gap + thickness) rotate(45deg)
+        &::after
+          transform: translateY(-(gap + thickness)) rotate(-45deg)
   hamburger_tint(color, tint_text, labelselector)
