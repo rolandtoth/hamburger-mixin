@@ -1,6 +1,3 @@
-// Animated hamburger icon mixin
-// https://github.com/rolandtoth/hamburger-mixin
-
 // helper mixin
 .hamburger_tint(@color: #000, @tint_text: false, @labelselector: ~"+ label") {
   @{labelselector} {
@@ -16,8 +13,11 @@
 }
 
 // main mixin
-.hamburger(@width: 32px, @thickness: 3px, @gap: 7px, @color: #000, @tint_text: false, @radius: 0, @anim: 0.25s, @labelselector: ~'+ label', @padding: 0, @text: 'right') {
+.hamburger(@width: 32px, @thickness: 3px, @gap: 7px, @color: #000, @background: transparent, @tint_text: false, @radius: 0, @radius_background: 0, @anim: 0.25s, @labelselector: ~'+ label', @padding: 0, @text: 'right', @style: false) {
   @height: (@thickness*3) + (@gap*2);
+  & when not (@background = transparent) and (@padding = 0) {
+    @padding: round((@thickness + @gap) / 1.5);
+  }
   display: none;
   @{labelselector} {
     user-select: none;
@@ -30,18 +30,23 @@
     z-index: 1050;
     line-height: @height;
     white-space: nowrap;
+    background: @background;
+    border-radius: @radius_background;
     span {
       display: inline-block;
       position: absolute;
       left: 100%;
       margin-top: 1px;
       transition: color @anim;
+      margin-left: @padding;
       & when (@text = false) {
         display: none;
       }
       & when not (@text = false) and (@text = left) {
         left: auto;
         right: 100%;
+        margin-left: 0;
+        margin-right: @padding;
       }
       &::before, &::after {
         content: '';
@@ -68,6 +73,15 @@
       font-size: 0;
       color: transparent;
       line-height: 0;
+      & when (@style = 'align-left') {
+        max-width: @width * 0.75;
+        transform-origin: 66% center;
+      }
+      & when not (@style = 'align-left') and (@style = 'align-right') {
+        max-width: @width * 0.75;
+        margin-left: @width * 0.25;
+        transform-origin: 33% center;
+      }
     }
     &::before, &::after {
       content: '';
