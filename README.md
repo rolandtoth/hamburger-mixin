@@ -89,9 +89,10 @@ With text:
 - **thickness**: the thickness of the bars. `default: 3px`
 - **gap**: the vertical space between the bars. Overall height is: thickness x 3 + gap x 2. `default: 7px`
 - **color**: the color of the icons. `default: #000 (black)`
-- **background**: solid background-color of the icon, should be used together with **padding** `default: transparent`
+- **background**: solid background-color of the icon, should be used together with **padding**. `default: transparent`
+- **tint_text**: whether to colorize the text with the value set in **color**. `default: false`
 - **radius**: border-radius value to round edges. `default: 0`
-- **radius_background**: border-radius of the bounding rectangle, visible only if **background** is not transparent. `default: 0`
+- **radius_background**: border-radius of the bounding rectangle. Visible only if **background** is not transparent. `default: 0`
 - **anim**: seconds of animation duration (transition-duration) or timing function + duration (eg. "ease-out 0.3s"). Use `-1` to disable morphing to an "X". `default:0.25s`
 - **labelselector**: in case the label is not directly after the checkbox, use this setting to tell the mixin where to find it. Eg. "~ div.content header nav label". `default: "+ label"`
 - **padding**: extra spacing around the icon. `default: 0`
