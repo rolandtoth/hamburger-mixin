@@ -1,47 +1,51 @@
-// Animated hamburger icon mixin
-// https://github.com/rolandtoth/hamburger-mixin
-
 // helper mixin
-hamburger_tint(color = black, tint_text = false, labelselector = '+ label')
-  {labelselector}
+hamburger_tint($color = black, $tint_text = false, $labelselector = '+ label')
+  {$labelselector}
     i, &::before, &::after
-      background-color: color
-    if tint_text
+      background-color: $color
+    if $tint_text
       span
-        color: color
+        color: $color
 
 // main mixin
-hamburger(width = 32px, thickness = 3px, gap = 7px, color = black, tint_text = false, radius = 0, anim = 0.25s, labelselector = '+ label', padding = 0, text = right)
-  height = (thickness * 3) + (gap * 2)
-  display none
-  {labelselector}
+hamburger($width = 32px, $thickness = 3px, $gap = 7px, $color = black, $background = transparent, $tint_text = false, $radius = 0, $radius_background = 0, $anim = 0.25s, $labelselector = '+ label', $padding = 0, $text = 'right', $style = false)
+  $height = ($thickness * 3) + ($gap * 2)
+  if $background != transparent && $padding == 0
+    $padding = round(($thickness + $gap) / 1.5)
+  display: none
+  {$labelselector}
     user-select: none
     position: relative
     display: inline-block
-    width: width
-    height: height
-    border: padding solid transparent
+    width: $width
+    height: $height
+    border: $padding solid transparent
     box-sizing content-box
     z-index: 1050
-    line-height: height
+    line-height: $height
     white-space: nowrap
+    background: $background
+    border-radius: $radius_background
     span
       display: inline-block
       position: absolute
       left: 100%
       margin-top: 1px
-      transition: color anim
-      if text == false
+      transition: color $anim
+      margin-left: $padding
+      if $text == false
         display none
-      else if text == 'left'
+      else if $text == 'left'
         left: auto
         right: 100%
+        margin-left: 0
+        margin-right: $padding
       &::before,
       &::after
         content: ''
         display inline-block
         min-width: 10px
-        width: width*0.2
+        width: $width * 0.2
     i,
     &::before,
     &::after
@@ -49,17 +53,24 @@ hamburger(width = 32px, thickness = 3px, gap = 7px, color = black, tint_text = f
       left: 0
       display: block
       will-change: transform, background-color
-      width: width
-      height: thickness
-      border-radius: radius
-      transition: transform anim, background-color anim
+      width: $width
+      height: $thickness
+      border-radius: $radius
+      transition: transform $anim, background-color $anim
       outline: 1px solid transparent
       backface-visibility: hidden
     i
-      top: (thickness + gap)
+      top: ($thickness + $gap)
       font-size: 0
       color: transparent
       line-height: 0
+      if $style == 'align-left'
+        max-width: $width * 0.75
+        transform-origin: 66% center
+      else if $style == 'align-right'
+        max-width: $width * 0.75
+        margin-left: $width * 0.25
+        transform-origin: 33% center
     &::before,
     &::after
       content: ''
@@ -70,12 +81,12 @@ hamburger(width = 32px, thickness = 3px, gap = 7px, color = black, tint_text = f
     &:hover
       cursor: pointer
   &:checked
-    if anim != -1
-      {labelselector}
+    if $anim != -1
+      {$labelselector}
         i
           transform: scaleX(0.001)
         &::before
-          transform: translateY(gap + thickness) rotate(45deg)
+          transform: translateY($gap + $thickness) rotate(45deg)
         &::after
-          transform: translateY(-(gap + thickness)) rotate(-45deg)
-  hamburger_tint(color, tint_text, labelselector)
+          transform: translateY(-($gap + $thickness)) rotate(-45deg)
+  hamburger_tint($color, $tint_text, $labelselector)
